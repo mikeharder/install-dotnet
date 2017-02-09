@@ -9,12 +9,8 @@ fi
 # echo on
 set -x
 
-# set OS environment variables
-. /etc/lsb-release
-
+echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
-
-echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ $DISTRIB_CODENAME main" | tee /etc/apt/sources.list.d/dotnetdev.list
 apt-get update
 
 apt-get -y install dotnet-dev-1.0.0-preview2.1-003177
