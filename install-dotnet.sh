@@ -13,4 +13,4 @@ echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ $
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
 apt-get update
 
-apt-get -y install dotnet-dev-1.0.1
+apt-get -y install dotnet-dev-1.0.4
