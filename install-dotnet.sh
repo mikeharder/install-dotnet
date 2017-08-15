@@ -1,16 +1,13 @@
 #!/bin/sh
 
-if [ $(id -u) != "0" ]; then
-    echo "Please run this script with sudo:"
-    echo "sudo $0 $*"
-    exit 1
-fi
-
 # echo on
 set -x
 
-echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
-apt-get update
+# https://www.microsoft.com/net/core#linuxubuntu
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 
-apt-get -y install dotnet-dev-1.0.4
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
+
+sudo apt-get update
+sudo apt-get -y install dotnet-sdk-2.0.0
