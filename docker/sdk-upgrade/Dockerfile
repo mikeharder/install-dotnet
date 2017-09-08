@@ -45,6 +45,6 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mic
     && sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod trusty main" > /etc/apt/sources.list.d/dotnetdev.list' \
     && apt-get update
 
-# 2.0.0
+# SDK 2.0.0
 # https://github.com/dotnet/core/blob/master/release-notes/download-archives/2.0.0-download.md
 RUN apt-get install -y dotnet-sdk-2.0.0
