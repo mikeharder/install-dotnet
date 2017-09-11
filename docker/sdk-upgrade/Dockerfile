@@ -39,7 +39,7 @@ RUN apt-get install -y dotnet-sdk-2.0.0-preview2-006497
 # Remove previews prior to upgrading.  In-place upgrade is currently not supported.
 RUN apt-get purge -y --auto-remove dotnet-dev-2.0.0-preview* dotnet-sdk-2.0.0-preview-*
 
-# Configure APT for SDK 2.0.0-Preview2 and earlier
+# Configure APT for SDK 2.0.0 and later
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg \
     && mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg \
     && sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod trusty main" > /etc/apt/sources.list.d/dotnetdev.list' \
